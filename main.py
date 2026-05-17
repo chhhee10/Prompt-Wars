@@ -21,13 +21,6 @@ if not os.path.exists("static/index.html"):
     with open("static/index.html", "w") as f:
         f.write("<html><body><h1>Lexguard UI Coming Soon</h1></body></html>")
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-@app.get("/", response_class=HTMLResponse)
-def read_root():
-    with open("static/index.html", "r") as f:
-        return HTMLResponse(content=f.read())
-
 @app.get("/health")
 def health():
     return {"status": "ok"}
@@ -40,3 +33,7 @@ def analyze(req: AnalyzeRequest):
         return JSONResponse(content=result)
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
+
+# Mount static files at the root directory (so /assets, /gavel.png, and / work!)
+# Placed at the bottom so API routes take precedence
+app.mount("/", StaticFiles(directory="static", html=True), name="static")

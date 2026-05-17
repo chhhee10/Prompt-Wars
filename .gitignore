@@ -72,3 +72,6 @@ google-cloud-sdk/
 google-cloud-cli-linux-x86_64.tar.gz
 application_default_credentials.json
 .gcloud/
+
+# Hide React source code
+sample-frontend/

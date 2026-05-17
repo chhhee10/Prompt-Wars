@@ -1,31 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <div class="header">
-        <h1>LEXGUARD</h1>
-        <p>Current Page Risk</p>
-    </div>
-
-    <div id="content">
-        <button id="scanBtn" class="primary-btn">Scan This Page</button>
-        <div id="loading" class="hidden">Analyzing Document...</div>
-    </div>
-
-    <div id="results" class="hidden">
-        <div class="score-card">
-            <h2>Risk Score</h2>
-            <div class="score-value" id="riskScore">0</div>
-            <p id="safeToSign"></p>
+    <div class="ext-popup">
+        <div class="ext-header">
+            <div class="ext-logo">
+                <span>LEX</span><span>GUARD</span>
+            </div>
+            <div class="ext-header-actions">
+                <span>EN</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
         </div>
-        <p id="summaryText" class="summary-text"></p>
-        <div id="clausesContainer"></div>
+
+        <div class="ext-body">
+            
+            <button id="scanBtn" class="ext-btn" style="margin-bottom: 8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Scan Page Now
+            </button>
+
+            <div id="loading" class="hidden loader-overlay">
+                <div class="spinner"></div>
+                <div style="font-size: 13px;">Analyzing terms...</div>
+            </div>
+
+            <div id="results" class="hidden">
+                <div id="verdictBox" class="ext-verdict">
+                    <div class="ext-verdict-left">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d11111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m14 13-4-4"/><path d="m15.5 11.5 2.5-2.5a2.12 2.12 0 0 0-3-3l-2.5 2.5"/><path d="m10.5 16.5-2.5 2.5a2.12 2.12 0 0 1-3-3l2.5-2.5"/><path d="m14 10-4 4"/><path d="m21 21-4-4"/></svg>
+                        <div>
+                            <div class="ext-verdict-title">Risk verdict</div>
+                            <div class="ext-verdict-score"><span id="riskScore">0</span><span>/100</span></div>
+                        </div>
+                    </div>
+                    <div class="ext-verdict-right">
+                        <div id="highRiskCount" class="high">0 high risk</div>
+                        <div id="medRiskCount" style="color: #666">0 medium</div>
+                    </div>
+                </div>
+                
+                <div id="warningsContainer">
+                    <!-- Dynamic warnings injected here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="ext-footer">
+            <a href="http://127.0.0.1:8000" target="_blank" style="text-decoration: none;">
+                <button class="ext-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Open Full Verdict
+                </button>
+            </a>
+        </div>
     </div>
-    
     <script src="popup.js"></script>
 </body>
 </html>
