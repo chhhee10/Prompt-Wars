@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="header">
+        <h1>LEXGUARD</h1>
+        <p>Current Page Risk</p>
+    </div>
+
+    <div id="content">
+        <button id="scanBtn" class="primary-btn">Scan This Page</button>
+        <div id="loading" class="hidden">Analyzing Document...</div>
+    </div>
+
+    <div id="results" class="hidden">
+        <div class="score-card">
+            <h2>Risk Score</h2>
+            <div class="score-value" id="riskScore">0</div>
+            <p id="safeToSign"></p>
+        </div>
+        <p id="summaryText" class="summary-text"></p>
+        <div id="clausesContainer"></div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

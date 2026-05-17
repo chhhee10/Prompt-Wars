@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "LexGuard - AI Contract Intelligence",
+  "version": "1.0",
+  "description": "Automatically analyzes Terms of Service and intercepts risky 'I Agree' buttons.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": [
+    "<all_urls>",
+    "https://lexguard-1068366375204.us-central1.run.app/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "LexGuard"
+  }
+}
