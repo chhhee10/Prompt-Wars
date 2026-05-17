@@ -82,11 +82,12 @@ def analyze_document(text: str, language: str = "en") -> dict:
     # ---------------------------------------------------------
     sys_prompt_3 = f"""You are a consumer rights advocate and translator. Review the analyzed clauses.
     For each clause, calculate risks, consequences, and translate explanations into {language}.
+    Calculate an 'overall_risk_score' from 0 to 100, where 100 is highly exploitative/dangerous.
 
     Output JSON MUST EXACTLY match this structure:
     {{
       "document_type": "string (e.g. employment_contract, tos, rental)",
-      "overall_risk_score": 0,
+      "overall_risk_score": 85,
       "safe_to_sign": false,
       "power_imbalance": "string (e.g. Company: 90% / You: 10%)",
       "summary": "string (2 sentence summary)",
